@@ -1,0 +1,206 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Ecom API",
+    "version": "1.0.0",
+    "description": "A API - CRUD from Ecom"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/products",
+      "description": "DEV"
+    },
+    {
+      "ulr": "",
+      "description": "PROD"
+    }
+  ],
+  "paths": {
+    "/all-products": {
+      "get": {
+        "summary": "This endpoint return all products in database",
+        "tags": ["Ecom"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#components/schemas/product"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/{id}": {
+      "get": {
+        "summary": "This endpoint return a unique productfinded by id",
+        "tags": ["Ecom"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id the product to be finded",
+            "required": "true"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Not found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#components/schemas/product"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/create": {
+      "post": {
+        "summary": "This endpoint the product has been created",
+        "tags": ["Ecom"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/product"
+              },
+              "examples": {
+                "product": {
+                  "value": {
+                    "id": "asdlaksjd",
+                    "description": "Camiseta Blunt Mago Preta",
+                    "imageURL": "https://tfcr55.myvtex.com/arquivos/ids/166971-930-1194/200316_00013.jpg?v=637903757302700000",
+                    "name": "Camiseta Blunt",
+                    "price": 99.0,
+                    "category": "clothes"
+                  }
+                }
+              },
+              "responses": {
+                "400": {
+                  "description": "Bad request"
+                },
+                "201": {
+                  "description": "product Created",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "$ref": "#components/schemas/product"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/update": {
+      "put": {
+        "summary": "This endpoint return the product updated",
+        "tags": ["Ecom"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/product"
+              },
+              "examples": {
+                "product": {
+                  "value": {
+                    "id": "asdlaksjd",
+                    "description": "Camiseta Blunt Mago Preta",
+                    "imageURL": "https://tfcr55.myvtex.com/arquivos/ids/166971-930-1194/200316_00013.jpg?v=637903757302700000",
+                    "name": "Camiseta Blunt",
+                    "price": 99.0,
+                    "category": "clothes"
+                  }
+                }
+              },
+              "responses": {
+                "400": {
+                  "description": "Bad request"
+                },
+                "200": {
+                  "description": "product Updated",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "$ref": "#components/schemas/product"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete/{id}": {
+      "delete": {
+        "summary": "This endpoint return a deleted product finded by id",
+        "tags": ["Ecom"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id the product to be deleted",
+            "required": "true"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Not found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#components/schemas/product"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "product": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "description": { "type": "string" },
+          "imageURL": { "type": "string" },
+          "name": { "type": "string" },
+          "price": { "type": "number" },
+          "category": { "type": "string" }
+        }
+      }
+    }
+  }
+}
