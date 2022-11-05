@@ -13,9 +13,6 @@ class ProductEntity {
     if (!this.name) {
       throw new Error('Nome precisa ser informado!');
     }
-    if (!this.title) {
-      throw new Error('Título precisa ser informado!');
-    }
     if (!this.description) {
       throw new Error('Descrição precisa ser informada!');
     }
@@ -27,13 +24,13 @@ class ProductEntity {
     }
     if (!this.imageURL) {
       throw new Error('Uma imagem precisa ser informada!');
-    }}
+    }
+  }
 
-  getproduct() {
+  getProduct() {
     return {
       id: this.id,
       name: this.name,
-      title: this.title,
       description: this.description,
       price: this.price,
       category: this.category,

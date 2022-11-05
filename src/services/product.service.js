@@ -10,15 +10,17 @@ async function findByIdProductService(idParam) {
   return ProductFinded;
 }
 
-async function createProductService(Product) {
-  const newProduct = new ProductEntity(Product);
+async function createProductService(product) {
+  const newProduct = new ProductEntity(product);
   newProduct.validate();
   const ProductCreate = new Product({ ...newProduct.getProduct() });
-  ProductCreate.save();
+  const createdProduct = await ProductCreate.save();
+  return createdProduct;
+
 }
 
-async function updateProductService(Product) {
-  const updateProduct = new ProductEntity(Product);
+async function updateProductService(product) {
+  const updateProduct = new ProductEntity(product);
   const updatedProduct = {
     ...updateProduct.getProduct(),
   };

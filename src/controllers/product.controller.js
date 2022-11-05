@@ -1,5 +1,4 @@
-const productsService = require("../services/product.service")
-
+const productsService = require('../services/product.service');
 
 async function findAllProductsController(req, res) {
   try {
