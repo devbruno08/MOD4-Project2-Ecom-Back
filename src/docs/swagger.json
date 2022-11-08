@@ -11,7 +11,7 @@
       "description": "DEV"
     },
     {
-      "ulr": "",
+      "ulr": "https://api-ecomm-back.herokuapp.com/products",
       "description": "PROD"
     }
   ],
