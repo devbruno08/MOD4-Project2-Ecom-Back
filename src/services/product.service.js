@@ -26,7 +26,7 @@ async function updateProductService(product) {
   };
 
   const ProductUpdatedInDatabe = await Product.findOneAndUpdate(
-    { id: Product.id },
+    { id: product.id},
     updatedProduct,
     { new: true },
   );
